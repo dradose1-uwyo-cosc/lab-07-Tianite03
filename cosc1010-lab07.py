@@ -1,12 +1,9 @@
-# Your Name Here
+# Talon Bluemel
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
-# Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# 10-31-24
+# Lab 7
+# Lab Section: 12
+# Sources, people worked with, help given to: Donovan Appelhans, Google AI helper, Stack Overflow, Troubleshooted w/ ChatGPT
 
 
 # Prompt the user for an upper bound 
@@ -16,9 +13,24 @@
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
-
+print("Please enter a number:")
+userInput = input()
 factorial = 1
 
+def factorial_calc(n):
+    if n.isdigit() == False:
+        return "not able to be determined. This isn't a number. Please enter a number."
+    n = int(n)
+    if n == 0:
+     return 1
+    else:
+        result = 1
+        while n > 1:
+            result *= n
+            n -= 1
+        return result
+
+factorial = factorial_calc(userInput)
 print(f"The result of the factorial based on the given bound is {factorial}")
 
 print("*"*75)
@@ -37,8 +49,12 @@ print("*"*75)
 # All this together means you will have an intensive while loop that includes multiple if statements, likely with some nesting 
 # The sum should start at 0 
 
-num_sum = 0 
-
+num_sum = 0
+i = 0
+while i < 3:
+    numbers = int(input("Enter a number to be added:"))
+    num_sum += numbers
+    i += 1
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -58,5 +74,28 @@ print("*"*75)
     # So, it should function the same for `5 + 6` as `5+6`
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
-
-        
+def calculator():
+    try:
+        num1 = float(input("Enter first number: "))
+        op = input("Enter operator (+, -, *, /, %): ")
+        num2 = float(input("Enter second number: "))
+        if op == "+":
+            result = num1 + num2
+        elif op == "-":
+            result = num1 - num2
+        elif op == "*":
+            result = num1 * num2
+        elif op == "/":
+            if num2 == 0:
+                return "Division by zero!"
+            else:
+                result = num1 / num2
+        elif op == "%":
+            result = num1 % num2
+        else:
+            return "Invalid operator!"
+        print(f"{num1} {op} {num2} = {result}")
+    except ValueError:
+        print("Invalid input. Please enter numbers only.")
+if __name__ == "__main__":
+    calculator()
